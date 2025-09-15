@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Spiral - RPL</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4f46e5, #9333ea);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }h1 {
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+#spiralCanvas {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #4f46e5;
+}
+
+.card p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Model Spiral dalam Rekayasa Perangkat Lunak</h1>
+  <canvas id="spiralCanvas" width="500" height="500"></canvas>  <div class="cards">
+    <div class="card">
+      <h2>Planning</h2>
+      <p>Menentukan kebutuhan sistem yang akan dibangun dan tujuan proyek.</p>
+      <p><b>Contoh:</b> Menentukan fitur absensi online untuk sekolah.</p>
+    </div><div class="card">
+  <h2>Risk Analysis</h2>
+  <p>Menganalisis risiko yang mungkin muncul dalam proyek.</p>
+  <p><b>Contoh:</b> Risiko keamanan login siswa, risiko server down saat banyak pengguna.</p>
+</div>
+
+<div class="card">
+  <h2>Engineering</h2>
+  <p>Membangun sistem atau prototipe sesuai kebutuhan yang sudah direncanakan.</p>
+  <p><b>Contoh:</b> Membuat halaman login, absensi, dan dashboard guru.</p>
+</div>
+
+<div class="card">
+  <h2>Evaluation</h2>
+  <p>Menguji hasil pengembangan dan menerima feedback dari pengguna.</p>
+  <p><b>Contoh:</b> Guru mencoba fitur absensi dan memberi masukan perbaikan.</p>
+</div>
+
+<div class="card">
+  <h2>Kelebihan Model Spiral</h2>
+  <ul>
+    <li>Fokus pada identifikasi risiko.</li>
+    <li>Fleksibel terhadap perubahan kebutuhan.</li>
+    <li>Cocok untuk proyek besar dan kompleks.</li>
+    <li>Proses iteratif sampai hasil sesuai.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Kekurangan Model Spiral</h2>
+  <ul>
+    <li>Biaya pengembangan tinggi.</li>
+    <li>Tidak cocok untuk proyek kecil.</li>
+    <li>Membutuhkan keahlian analisis risiko.</li>
+    <li>Dokumentasi bisa menjadi rumit.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Contoh Penerapan Umum</h2>
+  <ul>
+    <li>Aplikasi kasir untuk toko kecil.</li>
+    <li>Sistem e-learning sekolah.</li>
+    <li>Game mobile dengan update berkala.</li>
+    <li>Aplikasi e-commerce skala besar.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Contoh Kasus Nyata</h2>
+  <p><b>1. Sistem Absensi Sekolah Berbasis Web</b></p>
+  <ul>
+    <li><b>Planning:</b> Merencanakan fitur absensi online.</li>
+    <li><b>Risk Analysis:</b> Risiko titip absen → solusi: verifikasi login.</li>
+    <li><b>Engineering:</b> Membuat prototipe login & absensi.</li>
+    <li><b>Evaluation:</b> Guru mencoba sistem & memberi masukan.</li>
+  </ul>
+  <p><b>2. Aplikasi Pemesanan Makanan Online</b></p>
+  <ul>
+    <li><b>Planning:</b> Restoran ingin aplikasi pemesanan.</li>
+    <li><b>Risk Analysis:</b> Risiko server sibuk → solusi: optimasi server.</li>
+    <li><b>Engineering:</b> Fitur keranjang & pembayaran dibuat.</li>
+    <li><b>Evaluation:</b> Pelanggan mencoba versi beta & memberi masukan.</li>
+  </ul>
+</div>
+
+  </div>  <script>
+    const canvas = document.getElementById('spiralCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let angle = 0;
+
+    function drawSpiral() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.strokeStyle = '#4f46e5';
+      ctx.lineWidth = 2;
+      let x = canvas.width / 2;
+      let y = canvas.height / 2;
+      let radius = 5;
+      for (let i = 0; i < 500; i++) {
+        let dx = x + radius * Math.cos(angle + i * 0.1);
+        let dy = y + radius * Math.sin(angle + i * 0.1);
+        ctx.lineTo(dx, dy);
+        radius += 0.1;
+      }
+      ctx.stroke();
+      angle += 0.02;
+    }
+
+    setInterval(drawSpiral, 30);
+  </script></body>
+</html>
